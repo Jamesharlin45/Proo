@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predator Matches</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container {
+            overflow-y: auto;
+            height: 80vh;
+            width: 80vw;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            display: none;
+        }
+        .match-card {
+            background-color: #4CAF50;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            color: white;
+            position: relative;
+        }
+        .match-card h2 {
+            margin: 0 0 10px;
+            text-transform: uppercase;
+            font-size: 1.2em;
+        }
+        .match-card .outcome {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .match-card .outcome .result {
+            background-color: #388E3C;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        .match-card p {
+            margin: 0 0 10px;
+        }
+        .password-banner {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .password-banner .banner-content {
+            background-color: green;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            color: white;
+        }
+        .password-banner input {
+            margin-top: 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            width: calc(100% - 22px);
+        }
+        .password-banner button {
+            margin-top: 10px;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #388E3C;
+            color: white;
+            cursor: pointer;
+            width: calc(100% - 22px);
+        }
+        @keyframes floating {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0); }
+        }
+        .animated-text {
+            display: inline-block;
+            animation: floating 2s infinite;
+        }
+        .subscribe-message {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            color: black;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="password-banner" id="passwordBanner">
+        <div class="banner-content">
+            <h2 class="animated-text">Enter Password</h2>
+            <input type="password" id="passwordInput" placeholder="Password">
+            <button onclick="checkPassword()">Submit</button>
+        </div>
+    </div>
+    <div class="container" id="contentContainer">
+        <div class="match-card">
+            <h2>14/07/24</h2>
+            <p>Sarandi vs Ferro Carril Oeste</p>
+            <div class="outcome">
+                <span>U1.5</span>
+                <span class="result">Won</span>
+                <span>2.00</span>
+                <span>0 - 0</span>
+            </div>
+        </div>
+        <div class="match-card">
+            <h2>14/07/24</h2>
+            <p>Ekenas vs FC Inter Turku</p>
+            <div class="outcome">
+                <span>Away/ov2.5</span>
+                <span class="result">Won</span>
+                <span>2.00</span>
+                <span>0 - 7</span>
+            </div>
+        </div>
+        <!-- Additional match cards -->
+    </div>
+    <script>
+        function checkPassword() {
+            const password = document.getElementById('passwordInput').value;
+            if (password === '8899') {
+                document.getElementById('passwordBanner').style.display = 'none';
+                document.getElementById('contentContainer').style.display = 'block';
+                document.body.style.overflow = 'auto';
+            } else {
+                const bannerContent = document.querySelector('.banner-content');
+                bannerContent.innerHTML = `
+                    <div class="subscribe-message">
+                        <h2>Incorrect Password</h2>
+                        <p>Want to start winning bets? Subscribe now for access to exclusive match predictions and increase your chances of winning!</p>
+                        <button onclick="subscribe()">Subscribe</button>
+                    </div>
+                `;
+            }
+        }
+
+        function subscribe() {
+            alert('Refresh this page!');
+        }
+    </script>
+</body>
+</html>
